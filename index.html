@@ -5,7 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nimbus PHP</title>
-  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap" rel="stylesheet" />
   <style>
     html,
     body {
@@ -126,7 +126,7 @@
         speedX: 0.1 + Math.random() * 0.3,
         speedY: 0.02 + Math.random() * 0.08,
         opacity: 0.08 + Math.random() * 0.07,
-        img: cloudImages[Math.floor(Math.random() * cloudImages.length)]
+        img: cloudImages[Math.floor(Math.random() * cloudImages.length)],
       });
     }
 
@@ -140,7 +140,7 @@
 
     function animate() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      clouds.forEach(cloud => {
+      clouds.forEach((cloud) => {
         drawCloud(cloud);
         cloud.x += cloud.speedX;
         cloud.y += cloud.speedY;
@@ -153,9 +153,14 @@
       requestAnimationFrame(animate);
     }
 
-    Promise.all(cloudImages.map(img => new Promise(resolve => {
-      img.onload = resolve;
-    }))).then(() => {
+    Promise.all(
+      cloudImages.map(
+        (img) =>
+          new Promise((resolve) => {
+            img.onload = resolve;
+          })
+      )
+    ).then(() => {
       animate();
     });
 
