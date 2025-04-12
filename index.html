@@ -108,18 +108,16 @@
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const cloudImages = Array.from({ length: 6 }, (_, i) => `cloud${i + 1}.png`)
-      .map(src => {
-        const img = new Image();
-        img.src = src;
-        return img;
-      });
+    const cloudImages = Array.from({ length: 6 }, (_, i) => {
+      const img = new Image();
+      img.src = `cloud${i + 1}.png`;
+      return img;
+    });
 
     const clouds = [];
     const cloudCount = 20;
 
     for (let i = 0; i < cloudCount; i++) {
-      const img = cloudImages[Math.floor(Math.random() * cloudImages.length)];
       clouds.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -127,7 +125,7 @@
         speedX: 0.1 + Math.random() * 0.3,
         speedY: 0.02 + Math.random() * 0.08,
         opacity: 0.08 + Math.random() * 0.07,
-        img
+        img: cloudImages[Math.floor(Math.random() * cloudImages.length)]
       });
     }
 
